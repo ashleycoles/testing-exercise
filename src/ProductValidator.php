@@ -9,7 +9,7 @@ class ProductValidator {
      * - Codes must be exactly 16 digits
      * - Must not start with _
      * - Must not end with z (case-insensitive)
-     * - Must not contain a
+     * - Must not contain a -
      *
      * Example codes:
      *
