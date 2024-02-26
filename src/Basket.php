@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Product.php';
+require_once 'src/Product.php';
 
 class Basket
 {
