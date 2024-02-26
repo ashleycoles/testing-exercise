@@ -8,8 +8,19 @@ class ProductValidator {
      * Validation rules:
      * - Codes must be exactly 16 digits
      * - Must not start with _
-     * - Must not end with z (case-insensitive
-     * - Must not contain a -
+     * - Must not end with z (case-insensitive)
+     * - Must not contain a
+     *
+     * Example codes:
+     *
+     * Valid:
+     * - 1BCDEFGHIJKLMNOP
+     *
+     * Invalid:
+     * - BCDEFGHIJKLMNOPDEFC
+     * - _BCDEFGHIJKLMNOP
+     * - ABCDEFGHIJKLMNOZ
+     * - ABCDEFGH-JKLMNOD
      */
     public function validate(string $code): bool
     {
@@ -21,7 +32,7 @@ class ProductValidator {
             return false;
         }
 
-        if (str_ends_with($code, 'z')) {
+        if (str_ends_with($code, 'z') || str_ends_with($code, 'Z')) {
             return false;
         }
 
@@ -32,3 +43,7 @@ class ProductValidator {
         return true;
     }
 }
+
+$test = new ProductValidator();
+
+var_dump($test->validate('ABCDEFGH-JKLMNOD'));
