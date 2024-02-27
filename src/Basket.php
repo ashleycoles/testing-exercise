@@ -4,6 +4,9 @@ require_once 'src/Product.php';
 
 class Basket
 {
+    /**
+     * @var Product[]
+     */
     protected array $products = [];
 
     /**
@@ -53,5 +56,16 @@ class Basket
     public function getContents(): array
     {
         return $this->products;
+    }
+
+    public function getPrice(): float
+    {
+        $total = 0;
+
+        foreach ($this->products as $product) {
+            $total += $product->getPrice();
+        }
+
+        return $total;
     }
 }
